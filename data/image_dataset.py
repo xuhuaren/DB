@@ -81,7 +81,13 @@ class ImageDataset(data.Dataset, Configurable):
             index = index % self.num_samples
         data = {}
         image_path = self.image_paths[index]
-        img = cv2.imread(image_path, cv2.IMREAD_COLOR).astype('float32')
+        try:
+            img = cv2.imread(image_path, cv2.IMREAD_COLOR).astype('float32')
+            target = self.targets[index]
+        except:
+            print(image_path)
+            assert(0)
+            
         if self.is_training:
             data['filename'] = image_path
             data['data_id'] = image_path
@@ -89,7 +95,6 @@ class ImageDataset(data.Dataset, Configurable):
             data['filename'] = image_path.split('/')[-1]
             data['data_id'] = image_path.split('/')[-1]
         data['image'] = img
-        target = self.targets[index]
         data['lines'] = target
         if self.processes is not None:
             for data_process in self.processes:
