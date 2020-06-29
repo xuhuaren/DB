@@ -107,6 +107,7 @@ class Trainer:
         optimizer.zero_grad()
 
         results = model.forward(batch, training=True)
+        #print(results)
         if len(results) == 2:
             l, pred = results
             metrics = {}

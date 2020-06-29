@@ -39,9 +39,9 @@ for list_ in lists:
         
         cnt += 1
         
-        im_path_write = os.path.join(im_save, str(cnt) + '.jpg')
+        im_path_write = os.path.join(im_save, str(cnt) + '_num.jpg')
         cv2.imwrite(im_path_write, img_matrix)
-        txt_path_write = os.path.join(txt_save, str(cnt) + '.jpg' + '.txt')
+        txt_path_write = os.path.join(txt_save, str(cnt) + '_num.jpg' + '.txt')
         
         label = bbox[i]['label']
         if isinstance(label, float):
@@ -70,7 +70,7 @@ for list_ in lists:
         annots = [left, top, left+width, top, left+width, top+height, left, top+height]
         annots = [str(ss) for ss in annots]
         if len(annots)>=1:
-            img_lists.append(str(cnt) + '.jpg')
+            img_lists.append(str(cnt) + '_num.jpg')
             
      
         with open(txt_path_write, 'w') as f:

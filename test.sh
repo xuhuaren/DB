@@ -1,0 +1,1 @@
+python eval.py experiments/seg_detector/totaltext_resnet50_tres.yaml --resume outputs/workspace/DB/SegDetectorModel-seg_detector/resnet50/L1BalanceCELoss/model/model_epoch_1_minibatch_18000 --box_thresh 0.5 --polygon
